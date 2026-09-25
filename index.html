@@ -6,6 +6,7 @@
 <title>中秋节快乐 · 粒子祝福</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b1419}body{touch-action:manipulation;font-family:"Microsoft YaHei",system-ui,sans-serif}canvas{display:block;width:100%;height:100%}[hidden]{display:none!important}.invitation{position:fixed;inset:0;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 35%,#382330 0%,#10171e 70%)}.card{width:min(420px,100%);padding:42px 24px 34px;text-align:center;border:1px solid #edabc333;border-radius:24px;background:#201b25;box-shadow:0 24px 90px #0006;color:#fff0f5}.envelope{font-size:54px;margin-bottom:22px}.card h1{font-size:clamp(19px,5vw,24px);font-weight:500;margin:0 0 12px}.card p{color:#d8b7c7;margin:0 0 28px;font-size:16px}.open{border:0;border-radius:999px;padding:13px 58px;background:#f3a5c3;color:#472036;font-family:inherit;font-size:17px;font-weight:600;cursor:pointer;box-shadow:0 6px 24px #ee8db633;transition:background .2s,transform .2s}.open:hover{background:#ffc2db;transform:translateY(-2px)}.open:focus-visible{outline:3px solid white;outline-offset:5px}.open:active{transform:scale(.97)}
+.creator{position:fixed;left:18px;bottom:max(14px,env(safe-area-inset-bottom));z-index:10;margin:0;color:rgba(255,218,233,.78);font-size:13px;letter-spacing:.5px;pointer-events:none;text-shadow:0 1px 5px #0008}
 </style>
 </head>
 <body>
@@ -18,6 +19,7 @@
     <button class="open" id="open" type="button" autofocus>打开</button>
   </section>
 </div>
+<p class="creator" id="creator">创作者：Yili/马飞友</p>
 <audio id="music" preload="auto" hidden></audio>
 <script>
 (() => {
@@ -267,6 +269,7 @@ function animate(now){
 function finish(){
   if(finished)return;
   finished=true;music.pause();particles=[];streams=[];
+  document.getElementById('creator').hidden=true;
   ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);
   canvas.hidden=true;document.body.style.background='#000';document.documentElement.style.background='#000';
   // 普通浏览器可能禁止关闭手动打开的标签页，此时保留空白结束画面。
